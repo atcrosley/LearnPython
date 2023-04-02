@@ -1,0 +1,14 @@
+
+Commands for use in terminal
+cd = change directory 
+ls = listing directory 
+open = open files 
+cp = copy file to another directory
+mv = move file withought copying 
+mkdir = create a directory
+rmdir = remove directory
+rm -R = remove nested directories 
+.. go back one dir
+
+
+

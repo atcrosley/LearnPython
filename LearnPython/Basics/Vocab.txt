@@ -1,0 +1,3 @@
+GUI - Graphic User Interface 
+CLI - Command Line Interface (see termnial, powershell, command prompt)
+IDE - Integrated Development Environment 
