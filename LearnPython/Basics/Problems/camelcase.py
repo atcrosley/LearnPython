@@ -10,13 +10,15 @@ def main():
 
 # converts camelcase to snake_case and returns to main
 def snakeconverter(name):
+    new_name = ""
     # loop through each letter to find uppercase
     for letter in name:
         if letter.isupper():
             # change uppercase letter to lower case and add underscore
-            new = "_" + letter.lower()
-            # put changed letter back in name
-            return name.replace(letter, new)
+            new_name += "_" + letter.lower()
+        else: 
+            new_name += letter
+    return new_name
 
 
 main()
