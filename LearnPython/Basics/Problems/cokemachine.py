@@ -2,8 +2,12 @@
 
 def cokemachine():
     coke = 50
+    accepted_coins = [25, 10, 5]
     while coke > 0:
         x = int(input("Insert coin:"))
+        if x not in accepted_coins:
+            print("Invalid coin")
+            continue
         coke -= x
         if coke > 0:
             print("Amount due: ", abs(coke))
