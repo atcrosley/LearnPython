@@ -1,0 +1,12 @@
+API - Application Programming Interface
+A way for two pieces of software to talk to each other.
+
+REST - Representational State Transfer
+
+CRUD - Create, Read, Update, Delete
+A set of operations that can be done on a resource.
+
+POST - Create
+GET - Read
+PUT - Update
+DELETE - Delete
