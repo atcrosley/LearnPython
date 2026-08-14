@@ -1,0 +1,14 @@
+# Secrets — never commit API keys or private keys
+*.env
+!*.env.example
+*.pem
+*.key
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/

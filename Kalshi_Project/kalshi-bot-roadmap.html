@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Kalshi Trading Bot — Build Roadmap</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --panel: #171a21;
+    --panel-2: #1d212b;
+    --ink: #e8eaed;
+    --muted: #9aa2b1;
+    --line: #2a2f3a;
+    --accent: #5eead4;
+    --accent-2: #7dd3fc;
+    --warn: #fbbf24;
+    --danger: #fb7185;
+    --good: #86efac;
+    --radius: 14px;
+    --maxw: 860px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: radial-gradient(1200px 600px at 70% -10%, #16202b 0%, var(--bg) 55%);
+    color: var(--ink);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 48px 22px 96px; }
+  header.hero { margin-bottom: 8px; }
+  .kicker {
+    display: inline-block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--accent); border: 1px solid var(--line); border-radius: 999px;
+    padding: 5px 12px; margin-bottom: 18px; background: rgba(94,234,212,.06);
+  }
+  h1 { font-size: 34px; line-height: 1.15; margin: 0 0 12px; letter-spacing: -.02em; }
+  h1 span { color: var(--accent-2); }
+  .lede { color: var(--muted); font-size: 17px; max-width: 62ch; margin: 0 0 8px; }
+
+  .callout {
+    display: flex; gap: 14px; align-items: flex-start;
+    background: linear-gradient(180deg, rgba(251,191,36,.10), rgba(251,191,36,.03));
+    border: 1px solid rgba(251,191,36,.35); border-radius: var(--radius);
+    padding: 16px 18px; margin: 26px 0 10px;
+  }
+  .callout .ic { font-size: 20px; line-height: 1.3; }
+  .callout b { color: var(--warn); }
+  .callout .txt { color: #eddcae; font-size: 14.5px; }
+  .callout .txt strong { color: #ffe9b0; }
+
+  .principles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 26px 0 34px; }
+  @media (max-width: 620px){ .principles { grid-template-columns: 1fr; } }
+  .principle { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .principle h4 { margin: 0 0 4px; font-size: 14.5px; }
+  .principle p { margin: 0; color: var(--muted); font-size: 13.5px; }
+
+  .progress-row { display:flex; align-items:center; gap:14px; margin: 8px 0 30px; }
+  .bar { flex:1; height: 10px; background: var(--panel-2); border-radius: 999px; overflow: hidden; border:1px solid var(--line);}
+  .bar > i { display:block; height:100%; width:0%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width .35s ease; }
+  .progress-row .count { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 13.5px; white-space: nowrap; }
+
+  .phase {
+    position: relative; background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 20px 22px; margin: 16px 0;
+  }
+  .phase.done { border-color: rgba(134,239,172,.4); }
+  .phase-head { display:flex; align-items:flex-start; gap:14px; cursor: pointer; }
+  .pnum {
+    flex: 0 0 auto; width: 38px; height: 38px; border-radius: 10px; display:grid; place-items:center;
+    font-weight: 700; background: var(--panel-2); border:1px solid var(--line); color: var(--accent-2);
+  }
+  .phase.done .pnum { background: rgba(134,239,172,.14); color: var(--good); border-color: rgba(134,239,172,.4); }
+  .phase-head .meta { flex:1; min-width:0; }
+  .phase-head h3 { margin: 2px 0 3px; font-size: 18px; letter-spacing:-.01em; }
+  .phase-head .goal { margin:0; color: var(--muted); font-size: 14px; }
+  .tag { font-size: 11.5px; color: var(--accent); background: rgba(94,234,212,.08); border:1px solid var(--line); border-radius:999px; padding:2px 9px; margin-left:6px; white-space:nowrap; }
+  .chev { flex:0 0 auto; color: var(--muted); transition: transform .2s ease; margin-top: 8px; }
+  .phase.open .chev { transform: rotate(90deg); }
+
+  .body { display:none; margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--line); }
+  .phase.open .body { display:block; }
+  .body h5 { margin: 14px 0 6px; font-size: 12.5px; letter-spacing:.08em; text-transform:uppercase; color: var(--accent-2); }
+  .body h5:first-child { margin-top: 0; }
+  ul.clean { margin: 0; padding-left: 18px; }
+  ul.clean li { margin: 4px 0; font-size: 14.5px; color: #d7dbe3; }
+  .done-when { background: var(--panel-2); border-left: 3px solid var(--good); border-radius: 8px; padding: 10px 14px; margin-top: 12px; font-size: 14px; }
+  .done-when b { color: var(--good); }
+  code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; }
+  code { background: #0c0e13; border:1px solid var(--line); border-radius:6px; padding: 1px 6px; color: #b9e7dd; }
+  pre { background: #0c0e13; border:1px solid var(--line); border-radius:10px; padding: 12px 14px; overflow-x:auto; margin: 8px 0; }
+  pre code { background: none; border:none; padding:0; color:#cdd6e0; }
+
+  .check { display:flex; align-items:center; gap:10px; margin-top:14px; }
+  .check input { width:18px; height:18px; accent-color: var(--good); cursor:pointer; }
+  .check label { font-size: 13.5px; color: var(--muted); cursor:pointer; user-select:none; }
+
+  .resources { margin-top: 40px; }
+  .resources h2, .stack h2 { font-size: 20px; margin: 0 0 14px; }
+  .rgrid { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 620px){ .rgrid { grid-template-columns: 1fr; } }
+  a.card { text-decoration:none; color: inherit; background: var(--panel); border:1px solid var(--line); border-radius:12px; padding: 14px 16px; display:block; transition: border-color .15s ease, transform .15s ease; }
+  a.card:hover { border-color: var(--accent); transform: translateY(-1px); }
+  a.card .t { font-weight:600; font-size:14.5px; margin-bottom:2px; }
+  a.card .d { color: var(--muted); font-size: 13px; }
+  a.card .u { color: var(--accent-2); font-size: 12px; margin-top:6px; word-break: break-all; }
+
+  .stack { margin-top: 40px; }
+  .stack table { width:100%; border-collapse: collapse; font-size: 14px; }
+  .stack td { padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .stack td:first-child { color: var(--accent-2); font-weight:600; white-space:nowrap; width: 34%; }
+  .stack td:last-child { color: #d7dbe3; }
+  footer { margin-top: 46px; color: var(--muted); font-size: 12.5px; text-align:center; border-top:1px solid var(--line); padding-top: 22px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <span class="kicker">Beginner Build Plan</span>
+    <h1>Build your own <span>Kalshi trading bot</span></h1>
+    <p class="lede">A step-by-step roadmap that takes you from zero to a working, automated bot — one small, runnable piece at a time. Every step happens in Kalshi's free <b>demo environment</b> with mock money until you deliberately decide otherwise.</p>
+  </header>
+
+  <div class="callout">
+    <div class="ic">⚠️</div>
+    <div class="txt">
+      <strong>Golden rule for the whole journey:</strong> real money is the <em>last</em> thing you turn on, not the first. Kalshi's demo environment (<code>demo.kalshi.co</code>) uses fake funds and is completely separate from your real account. You'll do 90% of this roadmap there. When you eventually go live, you start with a few dollars — not your savings.
+    </div>
+  </div>
+
+  <div class="principles">
+    <div class="principle"><h4>🧱 One working piece at a time</h4><p>Never build the whole thing at once. Each phase ends with something you can actually run and see work.</p></div>
+    <div class="principle"><h4>🔒 Safe by default</h4><p>Demo money first. Dry-run mode second. Tiny real amounts last. You can't lose money you haven't enabled.</p></div>
+    <div class="principle"><h4>📓 Read before you write</h4><p>Fetching and printing data teaches you the API with zero risk before you ever place an order.</p></div>
+    <div class="principle"><h4>🧪 Learn just-in-time</h4><p>You don't need to know everything up front. Each phase names the exact concepts to pick up.</p></div>
+  </div>
+
+  <div class="progress-row">
+    <div class="bar"><i id="fill"></i></div>
+    <div class="count"><span id="pct">0</span>% &middot; <span id="ndone">0</span>/8 phases</div>
+  </div>
+
+  <!-- PHASES injected here -->
+  <div id="phases"></div>
+
+  <section class="stack">
+    <h2>Recommended starter stack</h2>
+    <table>
+      <tr><td>Language</td><td>Python 3.10+ — the most beginner-friendly choice, and what most Kalshi examples use.</td></tr>
+      <tr><td>Environment</td><td>A code editor (VS Code) + <code>uv</code> or plain <code>venv</code> + <code>pip</code> for managing packages.</td></tr>
+      <tr><td>HTTP + auth</td><td><code>requests</code> for REST calls; <code>cryptography</code> for signing requests with your RSA key.</td></tr>
+      <tr><td>Storage</td><td><code>sqlite3</code> (built into Python) to remember orders you've placed. No database server to install.</td></tr>
+      <tr><td>Config</td><td><code>python-dotenv</code> for secrets in a <code>.env</code> file; <code>PyYAML</code> if you want strategy config in YAML later.</td></tr>
+      <tr><td>Nice-to-have later</td><td>An official/community Kalshi Python SDK to skip hand-writing auth; <code>websocket-client</code> for real-time fills.</td></tr>
+    </table>
+  </section>
+
+  <section class="resources">
+    <h2>Key links</h2>
+    <div class="rgrid">
+      <a class="card" href="https://demo.kalshi.co/" target="_blank"><div class="t">Kalshi Demo Site →</div><div class="d">Sign up with mock info, add test funds, click around. Start here today.</div><div class="u">demo.kalshi.co</div></a>
+      <a class="card" href="https://docs.kalshi.com/getting_started/demo_env" target="_blank"><div class="t">Demo Environment Docs →</div><div class="d">Official base URLs for the demo REST + WebSocket API.</div><div class="u">docs.kalshi.com/getting_started/demo_env</div></a>
+      <a class="card" href="https://docs.kalshi.com/" target="_blank"><div class="t">Kalshi API Docs →</div><div class="d">Endpoints, authentication, and the request-signing scheme.</div><div class="u">docs.kalshi.com</div></a>
+      <a class="card" href="https://help.kalshi.com/en/articles/13823775-creating-and-using-a-demo-account" target="_blank"><div class="t">Demo Account Help →</div><div class="d">Step-by-step on creating a demo account and funding it with test cards.</div><div class="u">help.kalshi.com</div></a>
+    </div>
+  </section>
+
+  <footer>
+    Built as a personal reference. Not financial advice — you're responsible for your own keys, funds, and any orders your bot places.<br>
+    Tip: keep this open and tick off phases as you go.
+  </footer>
+
+</div>
+
+<script>
+const PHASES = [
+  {
+    n: 0, title: "Get your footing", tag: "~1 evening", goal: "Understand what you're building and set up the tools — no bot code yet.",
+    build: [
+      "Create a <b>demo account</b> at demo.kalshi.co using mock info, and add test funds.",
+      "Place a manual trade by hand on the demo site so you understand YES/NO, prices (in cents), and settlement.",
+      "Install Python, a code editor (VS Code), and create an empty project folder."
+    ],
+    learn: ["How prediction markets work: a contract pays $1 if the event happens, $0 if not.", "Why a price of 63¢ means 'the market thinks ~63% likely'.", "What 'YES', 'NO', 'bid', 'ask', and 'settlement' mean."],
+    done: "You've manually bought and sold a contract in the demo site, and <code>python3 --version</code> works in your terminal."
+  },
+  {
+    n: 1, title: "Talk to the API (read-only)", tag: "core skill", goal: "Write a tiny script that authenticates and prints real market data. Zero risk — you're only reading.",
+    build: [
+      "Generate an <b>API key + RSA private key</b> in your demo account settings.",
+      "Store the key ID and key path in a <code>.env</code> file (never commit this).",
+      "Write <code>get_markets.py</code> that signs a request and lists open markets."
+    ],
+    learn: ["How Kalshi request signing works (timestamp + method + path signed with your RSA key).", "Reading JSON responses in Python.", "Keeping secrets out of your code with environment variables."],
+    code: "# demo base URL — mock money, safe to hit\nBASE = \"https://external-api.demo.kalshi.co/trade-api/v2\"\n# GET /markets  ->  print each ticker, yes/no price, volume",
+    done: "Running <code>python get_markets.py</code> prints a list of live demo markets with prices."
+  },
+  {
+    n: 2, title: "Place your first order (in demo)", tag: "milestone", goal: "Programmatically place — and then cancel — a single limit order against the demo exchange.",
+    build: [
+      "Write <code>place_order.py</code> that sends one <b>limit order</b> for 1 contract at a price well away from the market (so it rests, doesn't fill).",
+      "Fetch your resting orders and confirm it's there.",
+      "Cancel it from code."
+    ],
+    learn: ["The difference between a market order and a limit order.", "What 'post-only' means and why it avoids paying the spread.", "Order lifecycle: resting → filled / cancelled."],
+    done: "You can place, list, and cancel an order entirely from your script — and see it reflected on the demo site."
+  },
+  {
+    n: 3, title: "Add a DRY-RUN switch", tag: "safety", goal: "Before any strategy logic, build the safety valve: a flag that decides whether orders are real or just printed.",
+    build: [
+      "Add <code>DRY_RUN=true</code> to your <code>.env</code>.",
+      "Wrap your order-placing function so that when dry-run is on, it <b>prints</b> what it would do instead of sending it.",
+      "Make dry-run the default everywhere."
+    ],
+    learn: ["Why every serious trading bot has this switch.", "Reading config/flags from the environment.", "Designing so the safe path is the default path."],
+    done: "With dry-run on, your script logs 'WOULD place: ...' and sends nothing. With it off (in demo), it places for real."
+  },
+  {
+    n: 4, title: "Write one simple strategy", tag: "the fun part", goal: "Turn 'find markets → decide → order' into a small, single-purpose strategy. Keep it dead simple.",
+    build: [
+      "Pick <b>one clear rule</b>, e.g. 'buy NO on markets where YES is priced under 10¢ and volume &gt; 500'.",
+      "Write a function that filters the market list down to ones that match.",
+      "For each match, build an order and hand it to your (dry-run-aware) placer."
+    ],
+    learn: ["Filtering lists of data by multiple conditions.", "Separating 'find markets' from 'decide order' from 'place order' — the pattern that keeps code clean.", "Why simple, explainable rules beat clever ones when you're learning."],
+    done: "Running your strategy in dry-run prints a sensible list of orders it <em>would</em> place. Then flip to demo and watch them appear."
+  },
+  {
+    n: 5, title: "Remember what you did", tag: "persistence", goal: "Store every order in a local SQLite file so the bot doesn't re-trade the same market or lose track after a restart.",
+    build: [
+      "Create a SQLite database with an <code>orders</code> table (ticker, side, price, count, status, timestamp).",
+      "Write each placed order to the DB.",
+      "Before placing, skip markets you've already traded (dedup)."
+    ],
+    learn: ["Basic SQL: create table, insert, select.", "Why bots need memory that survives restarts.", "Idempotency — not doing the same thing twice by accident."],
+    done: "Restarting your bot doesn't cause duplicate orders; you can open the <code>.db</code> file and see your trade history."
+  },
+  {
+    n: 6, title: "Automate it (the loop)", tag: "runner", goal: "Run the strategy on a schedule instead of by hand, with logging so you can see what happened while you were away.",
+    build: [
+      "Wrap everything in a loop that runs every N minutes.",
+      "Add proper <b>logging</b> to a file (timestamps, what it found, what it placed).",
+      "Handle errors gracefully — a failed API call should log and retry, not crash the whole bot."
+    ],
+    learn: ["Loops, sleep/timing, and clean shutdown (Ctrl-C).", "The <code>logging</code> module instead of <code>print</code>.", "try/except so one bad request doesn't kill everything."],
+    done: "You start the bot, walk away, come back, and the log file tells the full story of what it did in demo."
+  },
+  {
+    n: 7, title: "Consider going live — carefully", tag: "real money",
+    goal: "Only after weeks of clean demo runs: cross to production with the smallest possible stakes and extra guardrails.",
+    build: [
+      "Generate <b>separate</b> production API keys (demo keys don't work in prod).",
+      "Switch the base URL to production and fund your account with a <b>small</b> amount you're fully willing to lose.",
+      "Add hard limits: max contracts per order, max total spend, and keep dry-run available as an off switch.",
+      "Add a 'guard' that cancels resting orders before risky moments (e.g. an event starting)."
+    ],
+    learn: ["Real risk management: position sizing, loss limits.", "Exchange rules, fees, and eligibility.", "The emotional discipline of live trading vs. a demo."],
+    done: "You've run live with tiny stakes, reviewed the results honestly, and decided — with data — whether to continue.",
+    danger: true
+  }
+];
+
+const host = document.getElementById('phases');
+PHASES.forEach((p, i) => {
+  const el = document.createElement('div');
+  el.className = 'phase' + (i === 0 ? ' open' : '');
+  el.innerHTML = `
+    <div class="phase-head" data-i="${i}">
+      <div class="pnum">${p.n}</div>
+      <div class="meta">
+        <h3>${p.title}${p.tag ? `<span class="tag">${p.tag}</span>` : ''}</h3>
+        <p class="goal">${p.goal}</p>
+      </div>
+      <div class="chev">▶</div>
+    </div>
+    <div class="body">
+      <h5>What you'll build</h5>
+      <ul class="clean">${p.build.map(b => `<li>${b}</li>`).join('')}</ul>
+      <h5>What you'll learn</h5>
+      <ul class="clean">${p.learn.map(b => `<li>${b}</li>`).join('')}</ul>
+      ${p.code ? `<pre><code>${p.code.replace(/</g,'&lt;')}</code></pre>` : ''}
+      <div class="done-when"><b>Done when:</b> ${p.done}</div>
+      <div class="check">
+        <input type="checkbox" id="chk${i}">
+        <label for="chk${i}">Mark Phase ${p.n} complete</label>
+      </div>
+    </div>`;
+  host.appendChild(el);
+});
+
+// toggle open/close
+document.querySelectorAll('.phase-head').forEach(h => {
+  h.addEventListener('click', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'LABEL') return;
+    h.parentElement.classList.toggle('open');
+  });
+});
+
+// progress
+const phasesEls = [...document.querySelectorAll('.phase')];
+function refresh() {
+  let done = 0;
+  document.querySelectorAll('.check input').forEach((c, i) => {
+    if (c.checked) { done++; phasesEls[i].classList.add('done'); }
+    else phasesEls[i].classList.remove('done');
+  });
+  const pct = Math.round(done / PHASES.length * 100);
+  document.getElementById('fill').style.width = pct + '%';
+  document.getElementById('pct').textContent = pct;
+  document.getElementById('ndone').textContent = done;
+}
+document.querySelectorAll('.check input').forEach(c => c.addEventListener('change', refresh));
+refresh();
+</script>
+</body>
+</html>
